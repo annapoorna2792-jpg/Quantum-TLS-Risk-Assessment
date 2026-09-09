@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Post-Quantum Readiness in BFSI — Measurement and Mitigation</title>
+<style>
+:root{--bg:#080d16;--elev:#0e1524;--card:#131c2e;--hover:#1a2540;
+--border:#243149;--border2:#33445f;--text:#e8ecf4;--muted:#93a0b5;--dim:#65718a;
+--cyan:#38bdf8;--violet:#a78bfa;--green:#34d399;--amber:#fbbf24;--rose:#f87171;
+--grad:linear-gradient(120deg,#38bdf8,#a78bfa 55%,#34d399);--r:14px;--rs:9px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--text);font-size:15.5px;line-height:1.68;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;
+-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.wrap{max-width:1140px;margin:0 auto;padding:0 30px}
+h1,h2,h3,h4{margin:0;line-height:1.18;letter-spacing:-.022em}
+h1{font-size:clamp(31px,5vw,52px);font-weight:690}
+h2{font-size:clamp(22px,2.9vw,30px);font-weight:650;margin-bottom:11px}
+h3{font-size:19px;font-weight:650}h4{font-size:15px;font-weight:630}
+p{margin:0 0 14px}.lede{color:var(--muted);max-width:64ch}
+.sm{font-size:13.5px;color:var(--muted);line-height:1.62}
+.xs{font-size:12.5px;color:var(--dim);line-height:1.55}
+a{color:var(--cyan);text-decoration:none}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88em;
+background:rgba(167,139,250,.11);border:1px solid rgba(167,139,250,.22);
+border-radius:4px;padding:2px 7px;color:var(--violet)}
+
+header{position:relative;padding:80px 0 60px;overflow:hidden;border-bottom:1px solid var(--border)}
+header::before{content:"";position:absolute;inset:0;pointer-events:none;
+background:radial-gradient(ellipse 76% 50% at 16% -12%,rgba(56,189,248,.11),transparent),
+radial-gradient(ellipse 58% 42% at 84% 0,rgba(167,139,250,.10),transparent),
+radial-gradient(ellipse 50% 38% at 55% 108%,rgba(52,211,153,.07),transparent)}
+header .wrap{position:relative}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:11.5px;font-weight:670;
+letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);
+background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.26);
+border-radius:100px;padding:6px 15px;margin-bottom:24px}
+h1.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;
+color:transparent;max-width:18ch;margin-bottom:20px}
+header .lede{font-size:17.5px;max-width:64ch}
+.byline{margin-top:26px;font-size:13.5px;color:var(--dim)}
+
+section{padding:70px 0;border-bottom:1px solid var(--border)}
+.rule{width:44px;height:3px;border-radius:2px;background:var(--grad);margin-bottom:16px}
+.shead{margin-bottom:32px;max-width:70ch}
+
+/* the two capstones */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:20px;position:relative}
+.cap{background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+padding:28px;display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+.cap:hover{border-color:var(--border2);transform:translateY(-2px)}
+.cap .tag{font-size:11.5px;font-weight:660;letter-spacing:.08em;text-transform:uppercase;
+margin-bottom:12px}
+.cap.one .tag{color:var(--cyan)}.cap.two .tag{color:var(--green)}
+.cap h3{margin-bottom:8px}
+.cap .role{font-size:13px;color:var(--dim);margin-bottom:16px}
+.cap p{font-size:14px;color:var(--muted)}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);
+border:1px solid var(--border);border-radius:var(--rs);overflow:hidden;margin:18px 0}
+.fact{background:var(--elev);padding:13px 15px}
+.fact .v{font-size:19px;font-weight:660;letter-spacing:-.02em}
+.fact .k{font-size:11.5px;color:var(--dim);margin-top:1px}
+.go{margin-top:auto;padding-top:18px}
+.go a{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;
+border-radius:var(--rs);padding:11px 20px;color:#080d16}
+.cap.one .go a{background:var(--cyan)}.cap.two .go a{background:var(--green)}
+.go a:hover{opacity:.9}
+
+/* interlink strip */
+.link{background:var(--elev);border:1px solid var(--border);border-radius:var(--r);
+padding:26px;margin-top:22px}
+.chain{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:center;margin:20px 0}
+.node{background:var(--card);border:1px solid var(--border);border-radius:var(--rs);
+padding:15px;text-align:center}
+.node .n1{font-size:13px;font-weight:620;margin-bottom:3px}
+.node .n2{font-size:11.5px;color:var(--dim)}
+.node.mid{border-color:rgba(167,139,250,.4);background:rgba(167,139,250,.07)}
+.node.mid .n1{color:var(--violet)}
+.arr{color:var(--dim);font-size:17px;text-align:center}
+
+.plain{color:var(--muted);font-size:14.5px;background:var(--elev);
+border-left:2px solid var(--violet);border-radius:0 6px 6px 0;padding:12px 17px;
+margin:0 0 24px;max-width:80ch}
+.plain em{color:var(--text);font-style:normal;font-weight:560}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:22px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tbl{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:12px 15px;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--dim);font-weight:560;font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--elev)}
+td.n{white-space:nowrap}
+.note{border-left:2px solid var(--cyan);padding:3px 0 3px 18px;color:var(--muted);
+font-size:14px;margin:20px 0;max-width:80ch}
+.note.risk{border-left-color:var(--rose)}
+.note em{color:var(--text);font-style:normal;font-weight:560}
+ul{margin:0 0 12px;padding-left:19px}li{margin-bottom:8px}
+footer{padding:38px 0 62px;color:var(--dim);font-size:12.5px}
+@media(max-width:880px){
+ .pair,.g2{grid-template-columns:1fr}
+ .g4{grid-template-columns:repeat(2,1fr)}
+ .chain{grid-template-columns:1fr}.arr{transform:rotate(90deg)}
+}
+</style></head><body>
+
+<header><div class="wrap">
+  <div class="eyebrow">◆ Capstone Portfolio · M.Sc. Cybersecurity</div>
+  <h1 class="grad">Post-Quantum Readiness in BFSI: Measurement and Mitigation</h1>
+  <p class="lede">Two capstone projects addressing the same threat — harvest-now-decrypt-later —
+  from opposite ends. One measures exposure across third parties an institution does not control.
+  The other engineers key custody across cloud providers it does.</p>
+  <div class="byline">[redacted] B N · REVA Academy for Corporate Excellence · 2026</div>
+</div></header>
+
+<section><div class="wrap">
+  <div class="shead"><div class="rule"></div>
+    <h2>The shared threat</h2></div>
+  <p class="plain">In plain terms: an attacker records encrypted financial data today, stores it,
+  and reads it years later once quantum computers exist. Nothing alerts the victim, and data
+  already taken cannot be taken back. <em>The only questions that matter are how long the data
+  must stay secret, and how long protection will take to deploy.</em></p>
+
+  <div class="g4">
+    <div class="card"><h4>Retrospective</h4><p class="sm">Every control deployed today is
+    prospective only. Data already harvested cannot be un-harvested; the sole remedy is the
+    expiry of its confidentiality requirement.</p></div>
+    <div class="card"><h4>Silent</h4><p class="sm">Collection leaves no trace at the victim.
+    Exposure must be assessed from cryptographic posture and data characteristics, never from
+    incident evidence.</p></div>
+    <div class="card"><h4>Time-asymmetric</h4><p class="sm">Collection costs are incurred now,
+    benefits accrue later. This inverts normal risk economics and makes even low-value targets
+    worth storing.</p></div>
+    <div class="card"><h4>Regulated</h4><p class="sm">In BFSI, retention periods are set by
+    regulation — eight to twenty-five years — which makes the exposure window determinable
+    rather than estimated.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead"><div class="rule"></div>
+    <h2>Two projects, one problem</h2>
+    <p class="lede">Deliberately separated by layer, by direction of control, and by method.
+    Each is assessed independently.</p></div>
+
+  <div class="pair">
+    <div class="cap one">
+      <div class="tag">Capstone 1 · Risk Measurement</div>
+      <h3>Quantum-Aware TLS Risk Scoring</h3>
+      <div class="role">Third-Party API Communications · Risk Intelligence Engine</div>
+      <p>Measures the transit-layer cryptographic posture of BFSI endpoints the institution does
+      not control, and converts observation into a continuous exposure score. Black-box,
+      read-only, breadth over depth.</p>
+      <div class="facts">
+        <div class="fact"><div class="v">53</div><div class="k">endpoints measured</div></div>
+        <div class="fact"><div class="v">62.3%</div><div class="k">confidentiality ready</div></div>
+        <div class="fact"><div class="v" style="color:var(--rose)">0%</div><div class="k">authentication ready</div></div>
+        <div class="fact"><div class="v">p = 0.005</div><div class="k">CDN inheritance effect</div></div>
+      </div>
+      <div class="go"><a href="c1.html">Open the Risk Engine →</a></div>
+    </div>
+
+    <div class="cap two">
+      <div class="tag">Capstone 2 · Risk Mitigation</div>
+      <h3>Quantum-Safe Key Lifecycle Management</h3>
+      <div class="role">Multi-Cloud KMS · Crypto-Agile Orchestration</div>
+      <p>Engineers key custody across cloud providers the institution does control, negotiating
+      per-provider capability and applying a compensating control where none exists. Authenticated,
+      read-write, depth over breadth.</p>
+      <div class="facts">
+        <div class="fact"><div class="v" style="color:var(--rose)">1 of 3</div><div class="k">clouds with PQ import</div></div>
+        <div class="fact"><div class="v" style="color:var(--green)">100→0%</div><div class="k">compromise, control on</div></div>
+        <div class="fact"><div class="v">793→0</div><div class="k">consistency violations</div></div>
+        <div class="fact"><div class="v">2.8 µs</div><div class="k">cost of the control</div></div>
+      </div>
+      <div class="go"><a href="c2.html">Open the KMS Model →</a></div>
+    </div>
+  </div>
+
+  <div class="link">
+    <h3 style="margin-bottom:8px">How they connect</h3>
+    <p class="sm" style="max-width:78ch">The two are joined by a machine-readable artifact rather
+    than by argument. Capstone 1 emits a CycloneDX 1.6 Cryptography Bill of Materials per endpoint;
+    Capstone 2 consumes it and derives key policy — shortening rotation intervals and mandating the
+    compensating envelope where the associated transit posture is classical.</p>
+    <div class="chain">
+      <div class="node"><div class="n1">Measured TLS posture</div><div class="n2">Capstone 1 · per endpoint</div></div>
+      <div class="arr">→</div>
+      <div class="node mid"><div class="n1">CycloneDX 1.6 CBOM</div><div class="n2">machine-readable interchange</div></div>
+      <div class="arr">→</div>
+      <div class="node"><div class="n1">Derived key policy</div><div class="n2">Capstone 2 · per key version</div></div>
+    </div>
+    <div class="note"><em>The measurement also constrains the mitigation.</em> Capstone 1
+    established that retention minimisation — the low-cost alternative to cryptographic migration —
+    is unavailable across BFSI data classes, because every regulatory retention floor exceeds the
+    credible threat window. Capstone 1 therefore does not merely motivate Capstone 2; it eliminates
+    the alternative to it.</div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead"><div class="rule"></div>
+    <h2>Scope boundary</h2>
+    <p class="lede">The projects are complementary, not overlapping. Every dimension differs.</p></div>
+  <div class="tbl"><table>
+    <thead><tr><th></th><th>Capstone 1 — Measurement</th><th>Capstone 2 — Mitigation</th></tr></thead>
+    <tbody>
+      <tr><td><b>Asset</b></td><td>Data in transit</td><td>Key material</td></tr>
+      <tr><td><b>Protocol layer</b></td><td>TLS 1.3 handshake</td><td>KMS import and wrapping APIs</td></tr>
+      <tr><td><b>Subject</b></td><td>Third parties not under institutional control</td><td>Cloud providers under contract</td></tr>
+      <tr><td><b>Access</b></td><td>Black-box, external, read-only</td><td>Authenticated, API-driven, read-write</td></tr>
+      <tr><td><b>Direction</b></td><td>Measure and score</td><td>Enforce and remediate</td></tr>
+      <tr><td><b>Method</b></td><td>Empirical measurement at scale</td><td>Systems engineering and controlled experiment</td></tr>
+      <tr><td><b>Output</b></td><td>CBOM, risk score, vendor register</td><td>Key state machine, posture attestation</td></tr>
+      <tr><td><b>Shared</b></td><td colspan="2">CycloneDX CBOM schema and the three-value posture enumeration</td></tr>
+    </tbody></table></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead"><div class="rule"></div>
+    <h2>What the evidence shows</h2>
+    <p class="lede">Each finding is measured and reproducible from retained output.</p></div>
+  <div class="g2">
+    <div class="card"><h4 style="color:var(--cyan)">Readiness is inherited, not engineered</h4>
+      <p class="sm">Endpoints behind a major CDN were post-quantum capable in 83.3% of cases
+      against 44.8% origin-served — a risk difference of 38.5 points (Fisher exact, p = 0.005).
+      Institutions that self-host are the migration priority; the rest were migrated by their
+      provider's default.</p></div>
+    <div class="card"><h4 style="color:var(--cyan)">Confidentiality is protected, authentication is not</h4>
+      <p class="sm">Most endpoints negotiate hybrid ML-KEM, so recorded sessions resist decryption.
+      None presents a post-quantum certificate. Every institution measured remains forgeable by a
+      quantum adversary — a Web PKI constraint, not an institutional failing.</p></div>
+    <div class="card"><h4 style="color:var(--cyan)">The endpoint you assess is not the one you use</h4>
+      <p class="sm">Across nine paired institutions, no API endpoint was more post-quantum capable
+      than its own public website. API traffic is not cacheable, bypasses the CDN, and never
+      inherits its defaults. Assessing a vendor's website systematically overstates the integration
+      channel.</p></div>
+    <div class="card"><h4 style="color:var(--green)">Cloud capability is not uniform</h4>
+      <p class="sm">Only one of three major providers accepts key material over a post-quantum
+      channel, and that capability is preview and software-only. Orchestration must negotiate
+      per provider and record posture per key version rather than assume parity.</p></div>
+    <div class="card"><h4 style="color:var(--green)">The control works and costs nothing</h4>
+      <p class="sm">Under a modelled quantum adversary granted the RSA private key outright,
+      plaintext compromise fell from 200/200 to 0/200. Key material was recovered in both
+      conditions, which isolates the layer providing protection. Measured cost: 2.8 microseconds
+      and 73 bytes.</p></div>
+    <div class="card"><h4 style="color:var(--green)">Rotation is not a transaction</h4>
+      <p class="sm">No two-phase commit exists across providers. Deferring activation until every
+      import succeeds eliminated 793 consistency violations at no throughput cost — but reliability
+      compounds: a 5% per-operation fault rate yields 43.5% rotation success across twelve
+      operations.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead"><div class="rule"></div>
+    <h2>Limitations, stated</h2></div>
+  <div class="g2">
+    <div class="card"><h4 style="color:var(--amber)">Capstone 1</h4>
+      <ul class="sm">
+        <li>Purposive sample of 53 countable endpoints; category-level intervals are wide.</li>
+        <li>Only the public perimeter is observable. Settlement interfaces, terminal fleets and
+        CDN-to-origin legs are out of reach and plausibly carry the longest-retention data.</li>
+        <li>Non-response correlates with WAF deployment, so excluded institutions are likely
+        better defended — the bias runs against the reported figures.</li>
+        <li>The post-quantum finding rests on a single implementation; only the static-RSA result
+        was cross-validated independently.</li>
+      </ul></div>
+    <div class="card"><h4 style="color:var(--amber)">Capstone 2</h4>
+      <ul class="sm">
+        <li>The Google Cloud path was validated against a local RFC 9180 reference implementation,
+        not the live service. Interoperability is not claimed.</li>
+        <li>Saga providers are simulated; fault rates are a sensitivity range, not a prediction.</li>
+        <li>A compromised orchestration host defeats every control. Middleware holding plaintext key
+        material is worse than provider-managed keys, because it aggregates what providers would
+        hold separately.</li>
+        <li>Of four adversaries modelled, stolen credentials is the most probable in practice; this
+        work addresses the quantum adversary that existing key management does not cover.</li>
+      </ul></div>
+  </div>
+  <div class="note risk">Neither project claims completeness. Capstone 1 measures what is externally
+  observable and reports what is not. Capstone 2 demonstrates a control and states plainly what it
+  does not fix.</div>
+</div></section>
+
+<footer><div class="wrap">
+  Post-Quantum Readiness in BFSI · Capstone Portfolio · Institutional identities are anonymised to
+  category codes throughout. All figures derive from execution output retained as evidence files.
+</div></footer>
+</body></html>

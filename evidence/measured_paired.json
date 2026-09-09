@@ -1,0 +1,2015 @@
+{
+  "meta": {
+    "method": "raw ClientHello probes, nothing inferred",
+    "timestamp": "2026-09-07T11:03:42Z"
+  },
+  "results": [
+    {
+      "label": "Institution 01-web",
+      "host": "redacted-01e9559c4a.example",
+      "timestamp": "2026-09-07T11:00:39Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 7.37
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4587,
+          "selected_group_name": "SecP256r1MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 8.79
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "TIMEOUT",
+          "elapsed_ms": 8011.79
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768",
+        "SecP256r1MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_128_GCM_SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2027-03-22T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "Amazon",
+      "edge_provider": "Amazon",
+      "server_header": "awselb/2.0",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 01-api",
+      "host": "redacted-625064143f.example",
+      "timestamp": "2026-09-07T11:01:05Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 1,
+          "code": 0,
+          "desc": "alert_0",
+          "elapsed_ms": 291.88
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 1,
+          "code": 0,
+          "desc": "alert_0",
+          "elapsed_ms": 296.37
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 1,
+          "code": 0,
+          "desc": "alert_0",
+          "elapsed_ms": 297.21
+        }
+      },
+      "pq_groups": [],
+      "pqc": false,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": true,
+      "static_rsa_probe": {
+        "accepted": true,
+        "kind": "SERVER_HELLO",
+        "cipher": "0x009C",
+        "selected_in_offer": true
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_128_GCM_SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2026-11-09T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "",
+      "server_header": "awselb/2.0",
+      "authentication_ready": false,
+      "confidentiality_ready": false,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 02-web",
+      "host": "redacted-f1dd711127.example",
+      "timestamp": "2026-09-07T11:01:10Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 353.64
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 364.76
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 350.51
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "ecdsa-with-SHA256",
+        "cert_key": "EC-secp256r1",
+        "not_after": "2026-09-24T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 02-api",
+      "host": "redacted-d11e2f299a.example",
+      "timestamp": "2026-09-07T11:01:15Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1302",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 7.82
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.71
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.68
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1"
+      ],
+      "static_rsa": true,
+      "static_rsa_probe": {
+        "accepted": true,
+        "kind": "SERVER_HELLO",
+        "cipher": "0x009D",
+        "selected_in_offer": true
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2026-11-27T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 03-web",
+      "host": "redacted-3b031a7603.example",
+      "timestamp": "2026-09-07T11:01:17Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 8.06
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4587,
+          "selected_group_name": "SecP256r1MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 8.27
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "TIMEOUT",
+          "elapsed_ms": 8011.93
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768",
+        "SecP256r1MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_128_GCM_SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2026-12-14T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "Amazon",
+      "server_header": "PayU",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 03-api",
+      "host": "redacted-efba235d6c.example",
+      "timestamp": "2026-09-07T11:01:42Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 1,
+          "code": 0,
+          "desc": "alert_0",
+          "elapsed_ms": 293.36
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 1,
+          "code": 0,
+          "desc": "alert_0",
+          "elapsed_ms": 291.28
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 1,
+          "code": 0,
+          "desc": "alert_0",
+          "elapsed_ms": 291.23
+        }
+      },
+      "pq_groups": [],
+      "pqc": false,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_128_GCM_SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2026-12-20T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": false,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 04-web",
+      "host": "redacted-e298181e94.example",
+      "timestamp": "2026-09-07T11:01:47Z",
+      "probe_variant": "keyshare",
+      "reachable": false,
+      "tls13": false,
+      "unreachable_reason": "ALERT",
+      "control_probe": {
+        "group": "x25519",
+        "supported": false,
+        "variant": "keyshare",
+        "kind": "ALERT",
+        "level": 1,
+        "code": 0,
+        "desc": "alert_0"
+      },
+      "host_actually_up": true,
+      "measurement_status": "tls12_only",
+      "pqc": false,
+      "pq_groups": [],
+      "classical_groups": [],
+      "static_rsa": null,
+      "weak_cipher": null,
+      "confidentiality_ready": false,
+      "authentication_ready": false,
+      "impossible_state": false,
+      "countable": true,
+      "edge_provider": "",
+      "server_header": "awselb/2.0",
+      "fallback_tls_version": "TLSv1.2",
+      "fallback_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.2",
+        "cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2026-10-27T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert"
+    },
+    {
+      "label": "Institution 04-api",
+      "host": "redacted-66a97363ad.example",
+      "timestamp": "2026-09-07T11:01:50Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 8.43
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4587,
+          "selected_group_name": "SecP256r1MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 9.23
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "TIMEOUT",
+          "elapsed_ms": 8011.76
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768",
+        "SecP256r1MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_128_GCM_SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2026-10-27T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "Amazon",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 05-web",
+      "host": "redacted-a269cb5c7b.example",
+      "timestamp": "2026-09-07T11:02:15Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 31.89
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 9.34
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 11.07
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": true,
+      "static_rsa_probe": {
+        "accepted": true,
+        "kind": "SERVER_HELLO",
+        "cipher": "0x009C",
+        "selected_in_offer": true
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2026-12-03T09:12:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 05-api",
+      "host": "redacted-88f36e1e2f.example",
+      "timestamp": "2026-09-07T11:02:17Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 11.52
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 10.54
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 12.08
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": true,
+      "static_rsa_probe": {
+        "accepted": true,
+        "kind": "SERVER_HELLO",
+        "cipher": "0x009C",
+        "selected_in_offer": true
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2026-12-03T09:12:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 06-web",
+      "host": "redacted-fbb9e3968b.example",
+      "timestamp": "2026-09-07T11:02:18Z",
+      "probe_variant": "keyshare",
+      "reachable": false,
+      "tls13": false,
+      "unreachable_reason": "ALERT",
+      "control_probe": {
+        "group": "x25519",
+        "supported": false,
+        "variant": "keyshare",
+        "kind": "ALERT",
+        "level": 2,
+        "code": 70,
+        "desc": "protocol_version"
+      },
+      "host_actually_up": true,
+      "measurement_status": "tls12_only",
+      "pqc": false,
+      "pq_groups": [],
+      "classical_groups": [],
+      "static_rsa": null,
+      "weak_cipher": null,
+      "confidentiality_ready": false,
+      "authentication_ready": false,
+      "impossible_state": false,
+      "countable": true,
+      "edge_provider": "Akamai",
+      "server_header": "AkamaiGHost",
+      "fallback_tls_version": "TLSv1.2",
+      "fallback_cipher": "ECDHE-RSA-AES256-GCM-SHA384",
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.2",
+        "cipher": "ECDHE-RSA-AES256-GCM-SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2026-12-31T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert"
+    },
+    {
+      "label": "Institution 06-api",
+      "host": "redacted-6c8f3f17dc.example",
+      "timestamp": "2026-09-07T11:02:19Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 77.74
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 77.01
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 77.5
+        }
+      },
+      "pq_groups": [],
+      "pqc": false,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1",
+        "x448"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2026-09-30T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": false,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 07-web",
+      "host": "redacted-14624bf8f4.example",
+      "timestamp": "2026-09-07T11:02:22Z",
+      "probe_variant": "keyshare",
+      "reachable": false,
+      "tls13": false,
+      "unreachable_reason": "ALERT",
+      "control_probe": {
+        "group": "x25519",
+        "supported": false,
+        "variant": "keyshare",
+        "kind": "ALERT",
+        "level": 1,
+        "code": 0,
+        "desc": "alert_0"
+      },
+      "host_actually_up": true,
+      "measurement_status": "tls12_only",
+      "pqc": false,
+      "pq_groups": [],
+      "classical_groups": [],
+      "static_rsa": null,
+      "weak_cipher": null,
+      "confidentiality_ready": false,
+      "authentication_ready": false,
+      "impossible_state": false,
+      "countable": true,
+      "edge_provider": "",
+      "server_header": "awselb/2.0",
+      "fallback_tls_version": "TLSv1.2",
+      "fallback_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.2",
+        "cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2027-01-12T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "Amazon"
+    },
+    {
+      "label": "Institution 07-api",
+      "host": "redacted-ed51e8d69c.example",
+      "timestamp": "2026-09-07T11:02:24Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 9.56
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 12.45
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 10.56
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": true,
+      "static_rsa_probe": {
+        "accepted": true,
+        "kind": "SERVER_HELLO",
+        "cipher": "0x009C",
+        "selected_in_offer": true
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "ecdsa-with-SHA256",
+        "cert_key": "EC-secp256r1",
+        "not_after": "2026-10-17T04:48:12+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "GoogleTrustServices",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 08-web",
+      "host": "redacted-0918bf5b0b.example",
+      "timestamp": "2026-09-07T11:02:26Z",
+      "probe_variant": "keyshare",
+      "reachable": false,
+      "tls13": false,
+      "unreachable_reason": "ALERT",
+      "control_probe": {
+        "group": "x25519",
+        "supported": false,
+        "variant": "keyshare",
+        "kind": "ALERT",
+        "level": 2,
+        "code": 40,
+        "desc": "handshake_failure"
+      },
+      "host_actually_up": true,
+      "measurement_status": "tls12_only",
+      "pqc": false,
+      "pq_groups": [],
+      "classical_groups": [],
+      "static_rsa": null,
+      "weak_cipher": null,
+      "confidentiality_ready": false,
+      "authentication_ready": false,
+      "impossible_state": false,
+      "countable": true,
+      "edge_provider": "",
+      "server_header": "",
+      "fallback_tls_version": "TLSv1.2",
+      "fallback_cipher": "ECDHE-RSA-AES256-GCM-SHA384",
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.2",
+        "cipher": "ECDHE-RSA-AES256-GCM-SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2026-10-21T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "Entrust"
+    },
+    {
+      "label": "Institution 08-api",
+      "host": "redacted-c1ed48d3b0.example",
+      "timestamp": "2026-09-07T11:02:29Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 283.34
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 283.12
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 283.31
+        }
+      },
+      "pq_groups": [],
+      "pqc": false,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_128_GCM_SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2026-10-21T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "Entrust",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": false,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 09-web",
+      "host": "redacted-d510a405af.example",
+      "timestamp": "2026-09-07T11:02:34Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 10.75
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 10.85
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 17.26
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2027-01-15T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 09-api",
+      "host": "redacted-ed174cc678.example",
+      "timestamp": "2026-09-07T11:02:35Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 281.52
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 356.31
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 676.83
+        }
+      },
+      "pq_groups": [],
+      "pqc": false,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_128_GCM_SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2026-09-19T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "",
+      "server_header": "(no HTTP: SSLError)",
+      "authentication_ready": false,
+      "confidentiality_ready": false,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 10-web",
+      "host": "redacted-616e38b271.example",
+      "timestamp": "2026-09-07T11:02:41Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1302",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 8.13
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 8.02
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.51
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2026-11-07T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "Sectigo",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 10-api",
+      "host": "redacted-56bc5be0a9.example",
+      "timestamp": "2026-09-07T11:02:42Z",
+      "probe_variant": "keyshare",
+      "reachable": false,
+      "tls13": false,
+      "unreachable_reason": "TIMEOUT",
+      "control_probe": {
+        "group": "x25519",
+        "supported": false,
+        "variant": "keyshare",
+        "kind": "TIMEOUT"
+      },
+      "host_actually_up": false,
+      "measurement_status": "host_down",
+      "fallback_tls_version": null,
+      "fallback_cipher": null,
+      "certificate": {
+        "reachable": false,
+        "error": "TimeoutError: timed out"
+      },
+      "cert_issuer_ca": ""
+    },
+    {
+      "label": "Institution 11-web",
+      "host": "redacted-52484fd39b.example",
+      "timestamp": "2026-09-07T11:03:08Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 12.24
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 11.13
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 12.21
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2026-10-14T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "Sectigo",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 11-api",
+      "host": "redacted-f5865e61f0.example",
+      "timestamp": "2026-09-07T11:03:09Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 19.87
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 10.67
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 15.58
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "ecdsa-with-SHA256",
+        "cert_key": "EC-secp256r1",
+        "not_after": "2026-11-16T09:20:11+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "GoogleTrustServices",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 12-web",
+      "host": "redacted-928eb86ebd.example",
+      "timestamp": "2026-09-07T11:03:10Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 8.85
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 10.59
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 8.4
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": true,
+      "static_rsa_probe": {
+        "accepted": true,
+        "kind": "SERVER_HELLO",
+        "cipher": "0x009C",
+        "selected_in_offer": true
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "ecdsa-with-SHA256",
+        "cert_key": "EC-secp256r1",
+        "not_after": "2026-10-18T21:25:16+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "GoogleTrustServices",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 12-api",
+      "host": "redacted-a939705a3c.example",
+      "timestamp": "2026-09-07T11:03:12Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 8.32
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.51
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 17.67
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": true,
+      "static_rsa_probe": {
+        "accepted": true,
+        "kind": "SERVER_HELLO",
+        "cipher": "0x009C",
+        "selected_in_offer": true
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2027-04-03T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "Sectigo",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 13-web",
+      "host": "redacted-e448a661cd.example",
+      "timestamp": "2026-09-07T11:03:13Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 7.7
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4587,
+          "selected_group_name": "SecP256r1MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 7.96
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "TIMEOUT",
+          "elapsed_ms": 8012.97
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768",
+        "SecP256r1MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_128_GCM_SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2027-03-09T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "Amazon",
+      "edge_provider": "Amazon",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 13-api",
+      "host": "redacted-0207ca7604.example",
+      "timestamp": "2026-09-07T11:03:38Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 9.77
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.9
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 9.56
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": true,
+      "static_rsa_probe": {
+        "accepted": true,
+        "kind": "SERVER_HELLO",
+        "cipher": "0x009C",
+        "selected_in_offer": true
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "ecdsa-with-SHA256",
+        "cert_key": "EC-secp256r1",
+        "not_after": "2026-11-11T20:00:28+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "GoogleTrustServices",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 14-web",
+      "host": "redacted-c72f539592.example",
+      "timestamp": "2026-09-07T11:03:40Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 8.43
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 10.61
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 11.77
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": true,
+      "static_rsa_probe": {
+        "accepted": true,
+        "kind": "SERVER_HELLO",
+        "cipher": "0x009C",
+        "selected_in_offer": true
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2026-10-07T10:48:30+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Institution 14-api",
+      "host": "redacted-f04f825cfe.example",
+      "timestamp": "2026-09-07T11:03:41Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 9.21
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.71
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 10.01
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": true,
+      "static_rsa_probe": {
+        "accepted": true,
+        "kind": "SERVER_HELLO",
+        "cipher": "0x009C",
+        "selected_in_offer": true
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "not_after": "2026-10-07T10:48:30+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    }
+  ]
+}

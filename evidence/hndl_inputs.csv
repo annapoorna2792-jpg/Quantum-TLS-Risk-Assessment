@@ -1,0 +1,81 @@
+target,data_sensitivity,retention_years,remediation_cost
+Public Sector Bank 02,PII+loan_files,15,M
+Public Sector Bank 04,PII+loan_files,15,M
+Public Sector Bank 05,PII+loan_files,15,M
+Public Sector Bank 06,PII+loan_files,15,M
+Public Sector Bank 08,PII+loan_files,15,M
+Public Sector Bank 10,PII+loan_files,15,M
+Private Bank 01,PII+loan_files,15,M
+Private Bank 02,PII+loan_files,15,M
+Private Bank 03,PII+loan_files,15,M
+Private Bank 04,PII+loan_files,15,M
+Private Bank 05,PII+loan_files,15,M
+Private Bank 06,PII+loan_files,15,M
+Private Bank 07,PII+loan_files,15,M
+Private Bank 08,PII+loan_files,15,M
+Private Bank 09,PII+loan_files,15,M
+Private Bank 11,PII+loan_files,15,M
+Private Bank 12,PII+loan_files,15,M
+Private Bank 14,PII+loan_files,15,M
+Small Finance Bank 01,PII+loan_files,15,H
+Small Finance Bank 02,PII+loan_files,15,H
+Small Finance Bank 04,PII+loan_files,15,H
+Payments Bank 01,payment_txn,8,H
+Payments Bank 02,payment_txn,8,H
+Payment Aggregator 01,payment_txn,8,M
+Payment Aggregator 02,payment_txn,8,M
+Payment Aggregator 03,payment_txn,8,M
+Payment Aggregator 06,payment_txn,8,M
+Payment Aggregator 07,payment_txn,8,M
+Payment Aggregator 08,payment_txn,8,M
+Payment Aggregator 09,payment_txn,8,M
+Broker 01,securities_records,8,M
+Broker 02,securities_records,8,M
+Broker 03,securities_records,8,M
+Broker 04,securities_records,8,M
+Broker 05,securities_records,8,M
+Broker 06,securities_records,8,M
+Depository 02,securities_records,8,M
+Exchange 01,securities_records,8,L
+Exchange 02,securities_records,8,L
+Insurer 01,policy_records,25,H
+Insurer 02,policy_records,25,H
+Insurer 03,policy_records,25,H
+Insurer 04,policy_records,25,H
+Insurer 05,policy_records,25,H
+Insurer 06,policy_records,25,H
+Public Sector Bank 09,PII+loan_files,15,M
+Private Bank 10,PII+loan_files,15,M
+Private Bank 13,PII+loan_files,15,M
+Small Finance Bank 03,PII+loan_files,15,H
+Payment Aggregator 04,payment_txn,8,M
+Payment Aggregator 05,payment_txn,8,M
+Depository 01,securities_records,8,M
+Insurer 07,policy_records,25,H
+Institution 01-web,payment_txn,8,M
+Institution 01-api,payment_txn,8,M
+Institution 02-web,payment_txn,8,M
+Institution 02-api,payment_txn,8,M
+Institution 03-web,payment_txn,8,M
+Institution 03-api,payment_txn,8,M
+Institution 04-web,payment_txn,8,M
+Institution 04-api,payment_txn,8,M
+Institution 05-web,payment_txn,8,M
+Institution 05-api,payment_txn,8,M
+Institution 06-web,payment_txn,8,H
+Institution 06-api,payment_txn,8,H
+Institution 07-web,payment_txn,8,H
+Institution 07-api,payment_txn,8,H
+Institution 08-web,payment_txn,8,M
+Institution 08-api,payment_txn,8,M
+Institution 09-web,PII+loan_files,15,M
+Institution 09-api,PII+loan_files,15,M
+Institution 10-web,PII+loan_files,15,M
+Institution 11-web,PII+loan_files,15,M
+Institution 11-api,PII+loan_files,15,M
+Institution 12-web,securities_records,8,M
+Institution 12-api,securities_records,8,M
+Institution 13-web,securities_records,8,M
+Institution 13-api,securities_records,8,M
+Institution 14-web,securities_records,8,M
+Institution 14-api,securities_records,8,M

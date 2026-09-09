@@ -1,0 +1,144 @@
+{
+  "meta": {
+    "n": 200,
+    "bootstrap_reps": 10000,
+    "environment": "AWS EC2 t3.micro, 2 vCPU Intel(R) Xeon(R) Platinum 8259CL CPU @ 2.50GHz, 908 MB RAM, Ubuntu (Linux 7.0.0-1011-aws), eu-north-1. Wrapping and envelope operations measured locally; no network round-trips included.",
+    "timestamp": "2026-09-06T14:32:41Z"
+  },
+  "rsaes_oaep_sha256_4096": {
+    "n": 200,
+    "payload_bytes": 512,
+    "latency_ms": {
+      "p50": {
+        "estimate": 0.0967,
+        "ci95": [
+          0.0966,
+          0.0969
+        ]
+      },
+      "p95": {
+        "estimate": 0.1046,
+        "ci95": [
+          0.1041,
+          0.1079
+        ]
+      },
+      "p99": {
+        "estimate": 0.1117,
+        "ci95": [
+          0.106,
+          0.4773
+        ]
+      },
+      "mean": 0.0997
+    }
+  },
+  "rsa_aes_key_wrap_sha256_4096": {
+    "n": 200,
+    "payload_bytes": 552,
+    "latency_ms": {
+      "p50": {
+        "estimate": 0.14,
+        "ci95": [
+          0.1399,
+          0.1404
+        ]
+      },
+      "p95": {
+        "estimate": 0.1508,
+        "ci95": [
+          0.1497,
+          0.1538
+        ]
+      },
+      "p99": {
+        "estimate": 0.1772,
+        "ci95": [
+          0.1516,
+          0.5244
+        ]
+      },
+      "mean": 0.1442
+    },
+    "vs_rsaes_oaep_baseline": {
+      "mann_whitney_u": 39801.0,
+      "p_value": 9.438976387019891e-66,
+      "significant_at_0.05": true,
+      "cliffs_delta": 0.99,
+      "effect_magnitude": "large",
+      "median_ratio": 1.448
+    }
+  },
+  "envelope_single": {
+    "n": 200,
+    "payload_bytes": 4309,
+    "latency_ms": {
+      "p50": {
+        "estimate": 0.0081,
+        "ci95": [
+          0.0081,
+          0.0081
+        ]
+      },
+      "p95": {
+        "estimate": 0.0095,
+        "ci95": [
+          0.0094,
+          0.0102
+        ]
+      },
+      "p99": {
+        "estimate": 0.0189,
+        "ci95": [
+          0.0096,
+          0.0572
+        ]
+      },
+      "mean": 0.0088
+    },
+    "vs_rsaes_oaep_baseline": {
+      "mann_whitney_u": 0.0,
+      "p_value": 4.828613349834083e-67,
+      "significant_at_0.05": true,
+      "cliffs_delta": -1.0,
+      "effect_magnitude": "large",
+      "median_ratio": 0.084
+    }
+  },
+  "envelope_nested": {
+    "n": 200,
+    "payload_bytes": 4382,
+    "latency_ms": {
+      "p50": {
+        "estimate": 0.0109,
+        "ci95": [
+          0.0109,
+          0.011
+        ]
+      },
+      "p95": {
+        "estimate": 0.0163,
+        "ci95": [
+          0.0156,
+          0.0183
+        ]
+      },
+      "p99": {
+        "estimate": 0.0255,
+        "ci95": [
+          0.0173,
+          0.032
+        ]
+      },
+      "mean": 0.0118
+    },
+    "vs_rsaes_oaep_baseline": {
+      "mann_whitney_u": 0.0,
+      "p_value": 4.8286813056593474e-67,
+      "significant_at_0.05": true,
+      "cliffs_delta": -1.0,
+      "effect_magnitude": "large",
+      "median_ratio": 0.113
+    }
+  }
+}

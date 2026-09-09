@@ -1,0 +1,165 @@
+{
+  "meta": {
+    "providers": [
+      "aws",
+      "azure",
+      "gcp"
+    ],
+    "rotations_per_rate": 200,
+    "seed": 20260906,
+    "note": "Fault injection targets the orchestrator's failure handling, not provider latency. azure is configured with 2x the base fault rate to model an unevenly reliable estate.",
+    "timestamp": "2026-09-06T14:29:09Z"
+  },
+  "campaigns": [
+    {
+      "design": "deferred_activate",
+      "fault_rate": 0.0,
+      "rotations": 200,
+      "outcomes": {
+        "COMMITTED": 200
+      },
+      "success_rate": 1.0,
+      "compensation": {
+        "attempted": 0,
+        "failed": 0,
+        "success_rate": null
+      },
+      "rotations_with_violations": 0,
+      "violations_by_invariant": {},
+      "duration_ms": {
+        "median": 0.0465,
+        "p95": 0.0807
+      },
+      "faults_injected": 0
+    },
+    {
+      "design": "deferred_activate",
+      "fault_rate": 0.02,
+      "rotations": 200,
+      "outcomes": {
+        "COMMITTED": 137,
+        "COMPENSATED": 61,
+        "INCONSISTENT": 2
+      },
+      "success_rate": 0.685,
+      "compensation": {
+        "attempted": 84,
+        "failed": 2,
+        "success_rate": 0.9762
+      },
+      "rotations_with_violations": 143,
+      "violations_by_invariant": {
+        "I3_NO_ORPHANS": 283
+      },
+      "duration_ms": {
+        "median": 0.0254,
+        "p95": 0.0606
+      },
+      "faults_injected": 65
+    },
+    {
+      "design": "deferred_activate",
+      "fault_rate": 0.05,
+      "rotations": 200,
+      "outcomes": {
+        "COMPENSATED": 107,
+        "COMMITTED": 87,
+        "INCONSISTENT": 6
+      },
+      "success_rate": 0.435,
+      "compensation": {
+        "attempted": 142,
+        "failed": 6,
+        "success_rate": 0.9577
+      },
+      "rotations_with_violations": 188,
+      "violations_by_invariant": {
+        "I3_NO_ORPHANS": 491
+      },
+      "duration_ms": {
+        "median": 0.0097,
+        "p95": 0.0436
+      },
+      "faults_injected": 119
+    },
+    {
+      "design": "deferred_activate",
+      "fault_rate": 0.1,
+      "rotations": 200,
+      "outcomes": {
+        "COMPENSATED": 150,
+        "COMMITTED": 36,
+        "INCONSISTENT": 14
+      },
+      "success_rate": 0.18,
+      "compensation": {
+        "attempted": 151,
+        "failed": 14,
+        "success_rate": 0.9073
+      },
+      "rotations_with_violations": 179,
+      "violations_by_invariant": {
+        "I3_NO_ORPHANS": 1330
+      },
+      "duration_ms": {
+        "median": 0.0061,
+        "p95": 0.0274
+      },
+      "faults_injected": 178
+    },
+    {
+      "design": "deferred_activate",
+      "fault_rate": 0.2,
+      "rotations": 200,
+      "outcomes": {
+        "COMPENSATED": 172,
+        "INCONSISTENT": 25,
+        "COMMITTED": 3
+      },
+      "success_rate": 0.015,
+      "compensation": {
+        "attempted": 126,
+        "failed": 30,
+        "success_rate": 0.7619
+      },
+      "rotations_with_violations": 169,
+      "violations_by_invariant": {
+        "I3_NO_ORPHANS": 2619
+      },
+      "duration_ms": {
+        "median": 0.0051,
+        "p95": 0.0116
+      },
+      "faults_injected": 227
+    },
+    {
+      "design": "deferred_activate",
+      "fault_rate": 0.35,
+      "rotations": 200,
+      "outcomes": {
+        "COMPENSATED": 177,
+        "INCONSISTENT": 23
+      },
+      "success_rate": 0.0,
+      "compensation": {
+        "attempted": 56,
+        "failed": 23,
+        "success_rate": 0.5893
+      },
+      "rotations_with_violations": 182,
+      "violations_by_invariant": {
+        "I3_NO_ORPHANS": 2411
+      },
+      "duration_ms": {
+        "median": 0.0034,
+        "p95": 0.0066
+      },
+      "faults_injected": 223
+    }
+  ],
+  "headline": {
+    "clean_run_success_rate": 1.0,
+    "clean_run_violations": 0,
+    "interpretation": "With no injected faults the saga commits every rotation and holds all four invariants. As the fault rate rises, rotations fail but compensation prevents availability loss; the residual risk is compensation itself failing, which is what produces INCONSISTENT outcomes and is unavoidable without provider-side transactions."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "region": "eu-north-1",
+  "timestamp": "2026-09-06T14:02:56Z",
+  "key_id": "REDACTED-KEY-ID",
+  "import": {
+    "method": "RSAES_OAEP_SHA_256",
+    "posture": "classical_only",
+    "blob_bytes": 512,
+    "rsa_layer_bytes": 512,
+    "wrap_ms": 0.9087,
+    "wrapping_key_spec": "RSA_4096",
+    "algorithm_constraint": "AWS rejects RSA_AES_KEY_WRAP_SHA_* for SYMMETRIC_DEFAULT key material; the two-step method is reserved for RSA and ECC private keys. The operator cannot freely choose the wrapping algorithm - it is dictated by key material type."
+  },
+  "finding": "AWS KMS accepted key material only under RSA wrapping. GetParametersForImport offers no post-quantum algorithm. The import blob is recoverable by a CRQC; posture is classical_only.",
+  "nested_envelope": {
+    "round_trip_ok": true,
+    "posture": "hybrid_compensated",
+    "note": "hybrid_compensated, NOT pq_native: the AWS import channel is still classical. The control makes the harvested blob insufficient; it does not make the channel quantum safe."
+  }
+}

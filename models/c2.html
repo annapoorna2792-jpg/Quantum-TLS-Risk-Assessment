@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quantum-Safe Key Lifecycle Orchestration — Measured Model</title>
+<style>
+  :root{
+    --ink:#0e0e16; --surface:#16161f; --surface2:#1d1d2a; --line:#2c2c3e;
+    --text:#eceaf4; --muted:#8f8ca6; --dim:#63607a;
+    --signal:#e0a92e; --pq:#5fb3a1; --risk:#d4574e;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{animation:none!important;transition:none!important}}
+  body{
+    margin:0; background:var(--ink); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+    font-variant-numeric:tabular-nums;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px}
+  h1,h2,h3{line-height:1.15; letter-spacing:-0.02em; margin:0}
+  h1{font-size:clamp(30px,5vw,50px); font-weight:640}
+  h2{font-size:clamp(22px,3vw,30px); font-weight:620; margin-bottom:8px}
+  h3{font-size:17px; font-weight:620; margin-bottom:6px}
+  p{margin:0 0 14px}
+  .lede{color:var(--muted); max-width:62ch}
+  .small{font-size:13.5px; color:var(--muted)}
+  a{color:var(--signal)}
+
+  /* nav */
+  nav{position:sticky; top:0; z-index:20; background:rgba(14,14,22,.93);
+      backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex; gap:22px; align-items:center; height:52px; overflow-x:auto}
+  nav a{color:var(--muted); text-decoration:none; font-size:13.5px; white-space:nowrap}
+  nav a:hover,nav a:focus{color:var(--text)}
+  nav .mark{color:var(--text); font-weight:640; letter-spacing:-.01em}
+
+  section{padding:64px 0; border-bottom:1px solid var(--line)}
+  .shead{margin-bottom:28px}
+
+  /* hero */
+  .hero{padding:76px 0 60px; border-bottom:1px solid var(--line)}
+  .kicker{color:var(--signal); font-size:13.5px; margin-bottom:14px}
+  .hero h1{max-width:20ch; margin-bottom:18px}
+  .hero .lede{font-size:18px; max-width:60ch}
+
+  /* provider asymmetry — the thesis */
+  .prov{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:34px}
+  .pcard{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:18px}
+  .pcard .name{font-weight:640; margin-bottom:10px}
+  .verdict{font-size:26px; font-weight:660; letter-spacing:-.02em; margin-bottom:6px}
+  .yes{color:var(--pq)} .no{color:var(--risk)}
+  .pcard .meth{font-size:13px; color:var(--dim); line-height:1.5}
+  .srcnote{margin-top:16px; font-size:13px; color:var(--dim); max-width:70ch}
+
+  /* stat rows */
+  .stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1px;
+         background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden}
+  .stat{background:var(--surface); padding:18px}
+  .stat .v{font-size:27px; font-weight:660; letter-spacing:-.02em}
+  .stat .k{font-size:13px; color:var(--muted); margin-top:3px}
+
+  table{width:100%; border-collapse:collapse; font-size:14.5px}
+  th,td{text-align:left; padding:11px 12px; border-bottom:1px solid var(--line); vertical-align:top}
+  th{color:var(--muted); font-weight:560; font-size:13px}
+  tbody tr:last-child td{border-bottom:none}
+  td.n{white-space:nowrap}
+
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  .card{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:20px}
+
+  /* layered architecture */
+  .layer{background:var(--surface); border:1px solid var(--line); border-radius:8px;
+         padding:16px 18px; margin-bottom:10px}
+  .layer .lname{font-weight:620; margin-bottom:8px; font-size:15px}
+  .chips{display:flex; flex-wrap:wrap; gap:7px}
+  .chip{background:var(--surface2); border:1px solid var(--line); border-radius:5px;
+        padding:4px 9px; font-size:12.5px; color:var(--muted)}
+  .chip.on{color:var(--pq); border-color:rgba(95,179,161,.4)}
+  .chip.off{color:var(--dim)}
+  .down{text-align:center; color:var(--dim); font-size:13px; margin:2px 0 10px}
+
+  /* envelope demo */
+  .demo{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:24px}
+  .env{display:flex; flex-direction:column; gap:9px; margin:20px 0}
+  .band{border:1px solid var(--line); border-radius:7px; padding:13px 15px; background:var(--surface2);
+        transition:border-color .35s, opacity .35s, background .35s}
+  .band .bt{font-size:14px; font-weight:600}
+  .band .bd{font-size:12.5px; color:var(--dim); margin-top:2px}
+  .band.broken{border-color:var(--risk); background:rgba(212,87,78,.10)}
+  .band.broken .bt{color:var(--risk)}
+  .band.held{border-color:var(--pq); background:rgba(95,179,161,.10)}
+  .band.held .bt{color:var(--pq)}
+  .log{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:13px;
+       background:var(--ink); border:1px solid var(--line); border-radius:7px; padding:14px;
+       min-height:132px; color:var(--muted); white-space:pre-wrap; line-height:1.65}
+  .log b{color:var(--text); font-weight:600}
+  .log .r{color:var(--risk)} .log .g{color:var(--pq)}
+  button{font:inherit; font-size:14px; font-weight:560; color:var(--ink); background:var(--signal);
+         border:0; border-radius:6px; padding:10px 18px; cursor:pointer}
+  button:hover{background:#eab846}
+  button:disabled{opacity:.45; cursor:default}
+  button.ghost{background:transparent; color:var(--muted); border:1px solid var(--line)}
+  button.ghost:hover{color:var(--text); background:var(--surface2)}
+  .ctrls{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+
+  .note{border-left:2px solid var(--signal); padding:2px 0 2px 16px; color:var(--muted);
+        font-size:14.5px; margin:18px 0; max-width:74ch}
+  .warn{border-left-color:var(--risk)}
+
+  ul{margin:0 0 14px; padding-left:20px} li{margin-bottom:7px}
+  footer{padding:40px 0 60px; color:var(--dim); font-size:13.5px}
+
+  @media(max-width:760px){
+    .prov,.grid2{grid-template-columns:1fr}
+    section{padding:46px 0}
+  }
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <span class="mark">QSKMS</span>
+  <a href="#thesis">Finding</a>
+  <a href="#threat">Threat model</a>
+  <a href="#arch">Architecture</a>
+  <a href="#control">Control</a>
+  <a href="#evidence">Evidence</a>
+  <a href="#lifecycle">Lifecycle</a>
+  <a href="#residual">Residual risk</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker">Capstone 2 · Measured reference model</div>
+  <h1>Quantum-safe key lifecycle across clouds that don't agree</h1>
+  <p class="lede">Every reference architecture for post-quantum key management assumes
+  the major clouds offer comparable capability. Measured against live services, they
+  do not — and that asymmetry, not cryptographic cost, is what constrains migration.</p>
+
+  <div class="prov">
+    <div class="pcard">
+      <div class="name">AWS KMS</div>
+      <div class="verdict no">No PQ import</div>
+      <div class="meth">RSAES_OAEP_SHA_256 · RSA_AES_KEY_WRAP_SHA_256 · SM2PKE<br>
+      Confirmed by live import, eu-north-1</div>
+    </div>
+    <div class="pcard">
+      <div class="name">Azure Managed HSM</div>
+      <div class="verdict no">No PQ import</div>
+      <div class="meth">RSA-HSM key exchange key<br>CKM_RSA_AES_KEY_WRAP</div>
+    </div>
+    <div class="pcard">
+      <div class="name">Google Cloud KMS</div>
+      <div class="verdict yes">PQ import</div>
+      <div class="meth">HPKE · X-Wing / ML-KEM-768 / ML-KEM-1024<br>
+      Preview, software protection level only</div>
+    </div>
+  </div>
+  <p class="srcnote">Capability read from vendor API specifications and confirmed
+  empirically for AWS. No provider currently offers post-quantum import into an
+  HSM-backed key.</p>
+</div></header>
+
+<section id="thesis"><div class="wrap">
+  <div class="shead">
+    <h2>What the asymmetry costs</h2>
+    <p class="lede">Two of three providers accept imported key material only under RSA
+    wrapping. An adversary who records that exchange and later runs Shor's algorithm
+    recovers the key, and everything encrypted under it.</p>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="v">512 B</div><div class="k">AWS import blob, RSA-4096</div></div>
+    <div class="stat"><div class="v">0.909 ms</div><div class="k">Local wrapping latency</div></div>
+    <div class="stat"><div class="v">classical_only</div><div class="k">Recorded transit posture</div></div>
+    <div class="stat"><div class="v">1 of 3</div><div class="k">Providers with a PQ path</div></div>
+  </div>
+  <div class="note">Two constraints surfaced during the live import that are not in any
+  reference architecture. The wrapping algorithm is not operator-selectable — AWS rejected
+  <code>RSA_AES_KEY_WRAP_SHA_256</code> for symmetric material, reserving it for RSA and
+  ECC private keys. And BYOK requires <code>kms:CreateKey</code>, which cannot be scoped
+  to a key ARN, so adopting customer-supplied keys widens the privilege footprint.</div>
+</div></section>
+
+<section id="threat"><div class="wrap">
+  <div class="shead"><h2>Threat model</h2>
+    <p class="lede">Four adversaries. One is addressed and measured here; the others are
+    named so the scope of the claim is unambiguous.</p></div>
+  <table>
+    <thead><tr><th>Adversary</th><th>Capability</th><th>Control</th><th class="n">Evaluated</th></tr></thead>
+    <tbody>
+      <tr><td>A1 · Passive network, future quantum</td>
+          <td>Records import exchange and ciphertext; later obtains RSA private keys</td>
+          <td>PQ import where available; nested envelope where not</td>
+          <td class="n" style="color:var(--pq)">Measured</td></tr>
+      <tr><td>A2 · Compromised orchestrator</td>
+          <td>Full control of middleware, credentials and key material in memory</td>
+          <td>None in this prototype</td>
+          <td class="n" style="color:var(--risk)">Unmitigated</td></tr>
+      <tr><td>A3 · Compromised or compelled provider</td>
+          <td>Access to imported material at rest</td>
+          <td>Nested envelope, partial — provider lacks K<sub>pq</sub></td>
+          <td class="n">Not evaluated</td></tr>
+      <tr><td>A4 · Stolen cloud credentials</td>
+          <td>Legitimate-looking API access; needs no cryptographic capability</td>
+          <td>IAM role scoping, instance credentials, audit trail</td>
+          <td class="n">Not evaluated</td></tr>
+    </tbody>
+  </table>
+  <div class="note warn">A4 is the most probable adversary in practice. A1 is the one this
+  work addresses. That is a deliberate scoping decision — A1 is the adversary existing key
+  management does not cover — but the system should not be read as secure against the
+  threats institutions face most often.</div>
+</div></section>
+
+<section id="arch"><div class="wrap">
+  <div class="shead"><h2>Architecture</h2>
+    <p class="lede">Capability negotiation sits at the centre. Posture is recorded per key
+    version per provider, never assumed uniform.</p></div>
+
+  <div class="layer">
+    <div class="lname">Control plane — crypto-agile orchestrator</div>
+    <div class="chips">
+      <span class="chip on">Key inventory &amp; versioning</span>
+      <span class="chip on">Capability negotiation</span>
+      <span class="chip on">Posture recording</span>
+      <span class="chip on">Rotation saga + compensation</span>
+      <span class="chip on">CycloneDX 1.6 CBOM</span>
+      <span class="chip on">Compliance evidence</span>
+      <span class="chip off">Reconciliation sweep</span>
+      <span class="chip off">KMIP / PKCS#11</span>
+    </div>
+  </div>
+  <div class="down">↓</div>
+  <div class="layer">
+    <div class="lname">Cryptographic primitives</div>
+    <div class="chips">
+      <span class="chip on">AES-256-GCM</span>
+      <span class="chip on">AES-KWP (RFC 5649)</span>
+      <span class="chip on">RSAES-OAEP</span>
+      <span class="chip on">ML-KEM-768</span>
+      <span class="chip on">ML-DSA-65</span>
+      <span class="chip on">HPKE + X-Wing</span>
+      <span class="chip off">SLH-DSA</span>
+    </div>
+  </div>
+  <div class="down">↓</div>
+  <div class="layer">
+    <div class="lname">Provider adapters — heterogeneous by design</div>
+    <div class="chips">
+      <span class="chip on">AWS KMS · live · classical_only</span>
+      <span class="chip on">Azure Key Vault · live · classical_only</span>
+      <span class="chip off">GCP KMS · local reference implementation · pq_native</span>
+    </div>
+  </div>
+
+  <p class="small" style="margin-top:18px">Filled chips are implemented and exercised.
+  Dimmed chips are declared but not live: the GCP path was validated against a local
+  RFC 9180 reference implementation rather than the service, and no post-quantum
+  interoperability claim is made.</p>
+</div></section>
+
+<section id="control"><div class="wrap">
+  <div class="shead"><h2>The compensating control</h2>
+    <p class="lede">Where a provider offers no post-quantum import channel, the data key is
+    wrapped twice. The outer key never traverses that provider's channel — so a harvested
+    import blob is insufficient rather than sufficient.</p></div>
+
+  <div class="demo">
+    <div class="env">
+      <div class="band held" id="b-outer">
+        <div class="bt">Outer — AES-256-GCM under K<sub>pq</sub></div>
+        <div class="bd">Key material crossed only a post-quantum-safe channel. Never sent to AWS or Azure.</div>
+      </div>
+      <div class="band" id="b-inner">
+        <div class="bt">Inner — provider key K<sub>cloud</sub></div>
+        <div class="bd">Imported under RSAES-OAEP. This is the layer Shor's algorithm defeats.</div>
+      </div>
+      <div class="band" id="b-dek">
+        <div class="bt">Data encryption key → ciphertext</div>
+        <div class="bd">AES-256-GCM, authenticated with tenant context.</div>
+      </div>
+    </div>
+
+    <div class="ctrls">
+      <button id="run">Run the post-quantum adversary</button>
+      <button id="reset" class="ghost" disabled>Reset</button>
+      <span class="small" id="trials"></span>
+    </div>
+    <div class="log" id="log" role="status" aria-live="polite">Adversary is passive: it has recorded the import exchange and all ciphertext.
+Press run to grant it Shor's algorithm.</div>
+  </div>
+
+  <div class="note">The 0% compromise rate is definitional — AES-256-GCM rejects decryption
+  under an incorrect key. The contribution is the experimental design: key material is
+  recovered in <em>both</em> conditions, which isolates which layer provides the protection.
+  Without the single-layer baseline as a positive control, a working control could not be
+  distinguished from a threat that was never realisable.</div>
+
+  <div class="note warn">This does not make the provider's import channel quantum-safe, and
+  it does not protect material at rest inside a compromised provider. Keys protected this
+  way are recorded as <code>hybrid_compensated</code>, never <code>pq_native</code>.</div>
+</div></section>
+
+<section id="evidence"><div class="wrap">
+  <div class="shead"><h2>Measured evidence</h2>
+    <p class="lede">Every figure below comes from execution output retained as JSON.</p></div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>Control effectiveness</h3>
+      <p class="small">200 trials per condition. Shor's algorithm modelled by granting the
+      RSA private key outright — strictly stronger than a real quantum adversary.</p>
+      <table>
+        <thead><tr><th>Condition</th><th class="n">Key material</th><th class="n">Plaintext</th></tr></thead>
+        <tbody>
+          <tr><td>Single layer</td><td class="n">200/200</td><td class="n" style="color:var(--risk)">200/200</td></tr>
+          <tr><td>Nested envelope</td><td class="n">200/200</td><td class="n" style="color:var(--pq)">0/200</td></tr>
+        </tbody>
+      </table>
+      <p class="small" style="margin-top:10px">Absolute risk reduction 1.00. Failure stage
+      uniformly <code>outer_AESGCM_InvalidTag</code>.</p>
+    </div>
+
+    <div class="card">
+      <h3>Cost of the control</h3>
+      <p class="small">200 samples, 10,000-replicate percentile bootstrap. Local CPU only,
+      excluding network.</p>
+      <table>
+        <thead><tr><th>Operation</th><th class="n">p50 (ms)</th><th class="n">Payload</th></tr></thead>
+        <tbody>
+          <tr><td>Single-layer envelope</td><td class="n">0.0081</td><td class="n">4,309 B</td></tr>
+          <tr><td>Nested envelope</td><td class="n">0.0109</td><td class="n">4,382 B</td></tr>
+        </tbody>
+      </table>
+      <p class="small" style="margin-top:10px">2.8 µs and 73 bytes — unmeasurable against a
+      KMS API round trip.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>Rotation under partial failure</h3>
+    <p class="small">No two-phase commit exists across providers, so each import commits
+    independently. Rotation is modelled as a saga with compensation and evaluated under
+    injected faults — 200 rotations per cell.</p>
+    <table>
+      <thead><tr><th>Fault rate</th><th class="n">Naive activation</th><th class="n">Deferred activation</th><th class="n">Rotation success</th></tr></thead>
+      <tbody>
+        <tr><td>0.00</td><td class="n">0</td><td class="n">0</td><td class="n">1.000</td></tr>
+        <tr><td>0.05</td><td class="n" style="color:var(--risk)">111</td><td class="n" style="color:var(--pq)">0</td><td class="n">0.435</td></tr>
+        <tr><td>0.10</td><td class="n" style="color:var(--risk)">159</td><td class="n" style="color:var(--pq)">0</td><td class="n">0.180</td></tr>
+        <tr><td>0.20</td><td class="n" style="color:var(--risk)">270</td><td class="n" style="color:var(--pq)">0</td><td class="n">0.015</td></tr>
+        <tr><td>0.35</td><td class="n" style="color:var(--risk)">253</td><td class="n" style="color:var(--pq)">0</td><td class="n">0.000</td></tr>
+        <tr><td><strong>Total consistency violations</strong></td><td class="n" style="color:var(--risk)"><strong>793</strong></td><td class="n" style="color:var(--pq)"><strong>0</strong></td><td class="n">—</td></tr>
+      </tbody>
+    </table>
+    <p class="small" style="margin-top:12px">Availability was never violated across all
+    2,000 rotations. Reliability compounds: a three-provider rotation is twelve independent
+    operations, so a 5% per-operation fault rate yields 43.5% success. Compensation itself
+    degrades from 97.6% at a 2% fault rate to 58.9% at 35% — it runs against the same
+    failing providers.</p>
+  </div>
+</div></section>
+
+<section id="lifecycle"><div class="wrap">
+  <div class="shead"><h2>Lifecycle with posture</h2>
+    <p class="lede">Classical stages extended with a posture field that is measured per
+    provider on each import, never inherited.</p></div>
+  <table>
+    <thead><tr><th>Stage</th><th>Quantum-safe adaptation</th><th>Multi-cloud handling</th></tr></thead>
+    <tbody>
+      <tr><td>Generate</td><td>Material generated by the institution, not the provider</td><td>Single source; imported to each provider separately</td></tr>
+      <tr><td>Wrap</td><td>Method dictated by provider and key material type</td><td>Negotiated per provider; recorded, not assumed</td></tr>
+      <tr><td>Import</td><td>HPKE + ML-KEM where offered; RSA-OAEP otherwise</td><td>Posture recorded per version per provider</td></tr>
+      <tr><td>Activate</td><td>Deferred until every provider import succeeds</td><td>Eliminates split-brain; costs stranded material</td></tr>
+      <tr><td>Rotate</td><td>Saga with best-effort compensation</td><td>Compensation can itself fail — residual risk</td></tr>
+      <tr><td>Retire</td><td>Retired versions remain usable for old ciphertext</td><td>Revoked and destroyed versions do not</td></tr>
+      <tr><td>Destroy</td><td>Verified erasure; posture history retained for audit</td><td>Propagated across providers with audit trail</td></tr>
+    </tbody>
+  </table>
+  <div class="note">Three posture values, kept strictly distinct in compliance reporting:
+  <code>pq_native</code> — provider performed post-quantum import;
+  <code>hybrid_compensated</code> — classical import plus the nested envelope;
+  <code>classical_only</code> — no compensating control. Conflating the first two would
+  misrepresent residual risk to an auditor.</div>
+</div></section>
+
+<section id="residual"><div class="wrap">
+  <div class="shead"><h2>Residual risk and scope</h2>
+    <p class="lede">Stated rather than discovered.</p></div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Unmitigated</h3>
+      <ul class="small">
+        <li>A compromised orchestration host defeats everything. Middleware holding plaintext
+        key material is strictly worse than provider-managed keys, because it aggregates what
+        providers would otherwise hold separately. Production requires wrapping inside an HSM
+        boundary.</li>
+        <li>Key material already imported under classical wrapping cannot be retrospectively
+        protected. It requires re-keying, and ciphertext produced under it stays exposed for
+        its retention period.</li>
+        <li>KMS API endpoints are classically authenticated even where confidentiality is
+        post-quantum protected.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Scope limits</h3>
+      <ul class="small">
+        <li>The Google Cloud path was validated against a local RFC 9180 reference
+        implementation, not the live service. The cryptography is real; interoperability is
+        not claimed. Published HPKE test vectors were not run.</li>
+        <li>Saga providers are simulated. Fault injection at controlled rates cannot be
+        performed against production services, and provider latency is not what was measured.
+        Fault rates are a sensitivity range, not a prediction.</li>
+        <li>Benchmarks were taken on a burstable EC2 instance. The p50 interval spanned
+        0.3 µs across 200 samples, inconsistent with throttling during the run.</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  Quantum-Safe Secure Key Lifecycle Management in Multi-Cloud KMS · Capstone 2 ·
+  Figures derive from <code>aws_import_evidence.json</code>, <code>bench_results.json</code>,
+  <code>saga_comparison.json</code>. Provider capability read from vendor API references and
+  confirmed empirically for AWS.
+</div></footer>
+
+<script>
+(function(){
+  var steps = [
+    {t:900, cls:{}, txt:'<b>t = 0</b>  Recording BYOK import exchange to AWS KMS…\n       512-byte RSAES-OAEP blob captured. Ciphertext archived.'},
+    {t:1100, cls:{}, txt:'<b>t + Δ</b>  Shor\u2019s algorithm applied to the RSA-4096 wrapping key.\n       <span class="r">RSA private key recovered.</span>'},
+    {t:1000, cls:{inner:'broken'}, txt:'       Unwrapping harvested import blob…\n       <span class="r">K_cloud recovered — key material compromised in full.</span>'},
+    {t:1100, cls:{inner:'broken'}, txt:'       Attempting decryption of archived ciphertext…\n       Outer layer encountered: AES-256-GCM under K_pq.'},
+    {t:1000, cls:{inner:'broken', outer:'held'}, txt:'       K_pq never traversed the AWS import channel. Not recoverable.\n       <span class="r">InvalidTag \u2014 authentication failed.</span>'},
+    {t:0, cls:{inner:'broken', outer:'held'}, txt:'\n<b>Result</b>  <span class="g">Plaintext not recovered.</span>  Key material recovered: <span class="r">yes</span>.\n       The import channel was never the control. The outer envelope is.'}
+  ];
+  var log=document.getElementById('log'), run=document.getElementById('run'),
+      reset=document.getElementById('reset'), trials=document.getElementById('trials'),
+      inner=document.getElementById('b-inner'), outer=document.getElementById('b-outer'),
+      dek=document.getElementById('b-dek'), timers=[];
+
+  function clearAll(){ timers.forEach(clearTimeout); timers=[]; }
+
+  reset.addEventListener('click', function(){
+    clearAll();
+    inner.className='band'; outer.className='band held'; dek.className='band';
+    log.innerHTML='Adversary is passive: it has recorded the import exchange and all ciphertext.\nPress run to grant it Shor\u2019s algorithm.';
+    run.disabled=false; reset.disabled=true; trials.textContent='';
+  });
+
+  run.addEventListener('click', function(){
+    clearAll();
+    run.disabled=true; reset.disabled=false; log.innerHTML='';
+    inner.className='band'; outer.className='band';
+    var delay=0;
+    steps.forEach(function(s,i){
+      delay += (i===0?200:steps[i-1].t);
+      timers.push(setTimeout(function(){
+        log.innerHTML += (log.innerHTML?'\n':'') + s.txt;
+        log.scrollTop = log.scrollHeight;
+        inner.className = 'band' + (s.cls.inner?' '+s.cls.inner:'');
+        outer.className = 'band' + (s.cls.outer?' '+s.cls.outer:'');
+        if(i===steps.length-1){
+          trials.textContent='Reproduced across 200 trials — 0/200 compromised.';
+        }
+      }, delay));
+    });
+  });
+})();
+</script>
+</body>
+</html>

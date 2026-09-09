@@ -1,0 +1,250 @@
+{
+  "comparison": [
+    {
+      "design": "naive_incremental_activate",
+      "fault_rate": 0.0,
+      "rotations": 200,
+      "outcomes": {
+        "COMMITTED": 200
+      },
+      "success_rate": 1.0,
+      "compensation": {
+        "attempted": 0,
+        "failed": 0,
+        "success_rate": null
+      },
+      "rotations_with_violations": 0,
+      "violations_by_invariant": {},
+      "duration_ms": {
+        "median": 0.046,
+        "p95": 0.0809
+      },
+      "faults_injected": 0
+    },
+    {
+      "design": "deferred_activate",
+      "fault_rate": 0.0,
+      "rotations": 200,
+      "outcomes": {
+        "COMMITTED": 200
+      },
+      "success_rate": 1.0,
+      "compensation": {
+        "attempted": 0,
+        "failed": 0,
+        "success_rate": null
+      },
+      "rotations_with_violations": 0,
+      "violations_by_invariant": {},
+      "duration_ms": {
+        "median": 0.0476,
+        "p95": 0.0804
+      },
+      "faults_injected": 0
+    },
+    {
+      "design": "naive_incremental_activate",
+      "fault_rate": 0.05,
+      "rotations": 200,
+      "outcomes": {
+        "COMMITTED": 88,
+        "COMPENSATED": 101,
+        "INCONSISTENT": 11
+      },
+      "success_rate": 0.44,
+      "compensation": {
+        "attempted": 122,
+        "failed": 11,
+        "success_rate": 0.9098
+      },
+      "rotations_with_violations": 174,
+      "violations_by_invariant": {
+        "I2_CONSISTENCY": 111,
+        "I3_NO_ORPHANS": 248
+      },
+      "duration_ms": {
+        "median": 0.0143,
+        "p95": 0.0556
+      },
+      "faults_injected": 123
+    },
+    {
+      "design": "deferred_activate",
+      "fault_rate": 0.05,
+      "rotations": 200,
+      "outcomes": {
+        "COMPENSATED": 107,
+        "COMMITTED": 87,
+        "INCONSISTENT": 6
+      },
+      "success_rate": 0.435,
+      "compensation": {
+        "attempted": 142,
+        "failed": 6,
+        "success_rate": 0.9577
+      },
+      "rotations_with_violations": 188,
+      "violations_by_invariant": {
+        "I3_NO_ORPHANS": 491
+      },
+      "duration_ms": {
+        "median": 0.0095,
+        "p95": 0.0445
+      },
+      "faults_injected": 119
+    },
+    {
+      "design": "naive_incremental_activate",
+      "fault_rate": 0.1,
+      "rotations": 200,
+      "outcomes": {
+        "COMPENSATED": 145,
+        "COMMITTED": 40,
+        "INCONSISTENT": 15
+      },
+      "success_rate": 0.2,
+      "compensation": {
+        "attempted": 125,
+        "failed": 15,
+        "success_rate": 0.88
+      },
+      "rotations_with_violations": 198,
+      "violations_by_invariant": {
+        "I2_CONSISTENCY": 159,
+        "I3_NO_ORPHANS": 522
+      },
+      "duration_ms": {
+        "median": 0.0098,
+        "p95": 0.0334
+      },
+      "faults_injected": 175
+    },
+    {
+      "design": "deferred_activate",
+      "fault_rate": 0.1,
+      "rotations": 200,
+      "outcomes": {
+        "COMPENSATED": 150,
+        "COMMITTED": 36,
+        "INCONSISTENT": 14
+      },
+      "success_rate": 0.18,
+      "compensation": {
+        "attempted": 151,
+        "failed": 14,
+        "success_rate": 0.9073
+      },
+      "rotations_with_violations": 179,
+      "violations_by_invariant": {
+        "I3_NO_ORPHANS": 1330
+      },
+      "duration_ms": {
+        "median": 0.0059,
+        "p95": 0.026
+      },
+      "faults_injected": 178
+    },
+    {
+      "design": "naive_incremental_activate",
+      "fault_rate": 0.2,
+      "rotations": 200,
+      "outcomes": {
+        "COMPENSATED": 174,
+        "INCONSISTENT": 22,
+        "COMMITTED": 4
+      },
+      "success_rate": 0.02,
+      "compensation": {
+        "attempted": 103,
+        "failed": 24,
+        "success_rate": 0.767
+      },
+      "rotations_with_violations": 194,
+      "violations_by_invariant": {
+        "I2_CONSISTENCY": 270,
+        "I3_NO_ORPHANS": 382
+      },
+      "duration_ms": {
+        "median": 0.0049,
+        "p95": 0.0141
+      },
+      "faults_injected": 220
+    },
+    {
+      "design": "deferred_activate",
+      "fault_rate": 0.2,
+      "rotations": 200,
+      "outcomes": {
+        "COMPENSATED": 172,
+        "INCONSISTENT": 25,
+        "COMMITTED": 3
+      },
+      "success_rate": 0.015,
+      "compensation": {
+        "attempted": 126,
+        "failed": 30,
+        "success_rate": 0.7619
+      },
+      "rotations_with_violations": 169,
+      "violations_by_invariant": {
+        "I3_NO_ORPHANS": 2619
+      },
+      "duration_ms": {
+        "median": 0.0051,
+        "p95": 0.0109
+      },
+      "faults_injected": 227
+    },
+    {
+      "design": "naive_incremental_activate",
+      "fault_rate": 0.35,
+      "rotations": 200,
+      "outcomes": {
+        "COMPENSATED": 179,
+        "INCONSISTENT": 21
+      },
+      "success_rate": 0.0,
+      "compensation": {
+        "attempted": 56,
+        "failed": 21,
+        "success_rate": 0.625
+      },
+      "rotations_with_violations": 189,
+      "violations_by_invariant": {
+        "I2_CONSISTENCY": 253,
+        "I3_NO_ORPHANS": 716
+      },
+      "duration_ms": {
+        "median": 0.0035,
+        "p95": 0.0087
+      },
+      "faults_injected": 221
+    },
+    {
+      "design": "deferred_activate",
+      "fault_rate": 0.35,
+      "rotations": 200,
+      "outcomes": {
+        "COMPENSATED": 177,
+        "INCONSISTENT": 23
+      },
+      "success_rate": 0.0,
+      "compensation": {
+        "attempted": 56,
+        "failed": 23,
+        "success_rate": 0.5893
+      },
+      "rotations_with_violations": 182,
+      "violations_by_invariant": {
+        "I3_NO_ORPHANS": 2411
+      },
+      "duration_ms": {
+        "median": 0.0035,
+        "p95": 0.0064
+      },
+      "faults_injected": 223
+    }
+  ],
+  "i2_naive": 793,
+  "i2_deferred": 0
+}
